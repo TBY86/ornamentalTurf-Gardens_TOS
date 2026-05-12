@@ -1,0 +1,435 @@
+/* ============================================
+   CSS Reset & Base Variables
+   Separation of Concerns: This file handles
+   ALL visual styling for the legal pages
+   ============================================ */
+
+:root {
+    /* Color Profile - Matching Ornamental Turf & Gardens brand */
+    --primary-green: #1e5622;
+    --primary-green-dark: #0f3a12;
+    --primary-green-light: #2d6a2f;
+    --accent-gold: #c9a03d;
+    --accent-gold-light: #dbb95e;
+    --text-dark: #2c3e2f;
+    --text-medium: #4a5e4c;
+    --text-light: #6b7c6d;
+    --bg-light: #f9fbf7;
+    --bg-offwhite: #f5f7f2;
+    --white: #ffffff;
+    --border-light: #e0e8de;
+    --shadow-sm: 0 5px 20px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.1);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+/* Container Utility */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* ============================================
+   Header Styles
+   ============================================ */
+
+.legalHeader {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+    color: var(--white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    border-bottom: 5px solid var(--accent-gold);
+    position: relative;
+}
+
+.legalHeader h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.backLink {
+    display: inline-block;
+    color: var(--accent-gold-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-lg);
+    transition: color 0.3s ease;
+}
+
+.backLink:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.lastUpdatedHeader {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: var(--spacing-xs);
+}
+
+/* ============================================
+   Sticky Navigation Bar
+   ============================================ */
+
+.stickyNav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+/* When sticky class is applied (scrolled past header) */
+.stickyNav.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    border-bottom: 2px solid var(--accent-gold);
+}
+
+/* Section Links Container */
+.sectionLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    padding: 0.75rem 0;
+    list-style: none;
+}
+
+/* Individual Section Links - NO BUTTONS, just hyperlinks */
+.sectionLinks a {
+    color: var(--text-medium);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.sectionLinks a:hover {
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
+}
+
+/* Active section highlight */
+.sectionLinks a.active {
+    color: var(--primary-green);
+    border-bottom-color: var(--primary-green);
+    font-weight: 600;
+}
+
+/* Mobile responsiveness - wrap and scroll horizontally if needed */
+@media (max-width: 768px) {
+    .stickyNav {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .sectionLinks {
+        display: inline-flex;
+        padding: 0.5rem 1rem;
+    }
+    
+    .sectionLinks a {
+        white-space: nowrap;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sectionLinks a {
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================
+   Main Content Styles
+   ============================================ */
+
+.legalContent {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-2xl);
+    margin: var(--spacing-xl) auto;
+}
+
+/* Section Headings */
+.legalContent h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-green);
+    font-size: 1.75rem;
+    font-weight: 600;
+    border-left: 5px solid var(--accent-gold);
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+}
+
+.legalContent h2:first-of-type {
+    margin-top: 0;
+}
+
+.legalContent h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-green-light);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+}
+
+/* Paragraph & List Styles */
+.legalContent p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+.legalContent ul, .legalContent ol {
+    margin: var(--spacing-md) 0 var(--spacing-md) var(--spacing-xl);
+    color: var(--text-medium);
+}
+
+.legalContent li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.7;
+}
+
+/* Link Styles */
+.legalContent a {
+    color: var(--primary-green);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-gold);
+    transition: all 0.2s ease;
+}
+
+.legalContent a:hover {
+    color: var(--accent-gold);
+    border-bottom-color: var(--primary-green);
+}
+
+/* Address Styles */
+address {
+    font-style: normal;
+    background: var(--bg-offwhite);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-lg) 0;
+    border-left: 4px solid var(--accent-gold);
+}
+
+address strong {
+    color: var(--primary-green);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+address a {
+    border-bottom: none;
+}
+
+/* ============================================
+   Special Section: SMS Privacy
+   ============================================ */
+
+.smsPrivacySection {
+    background: linear-gradient(to right, var(--bg-offwhite), var(--white));
+    border-left: 5px solid var(--accent-gold);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.smsPrivacySection h2 {
+    margin-top: 0;
+    border-left-color: var(--primary-green);
+}
+
+/* ============================================
+   Compliance Footer (within content)
+   ============================================ */
+
+.complianceFooter {
+    text-align: center;
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid var(--border-light);
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* ============================================
+   Page Footer Styles
+   ============================================ */
+
+.legalFooter {
+    background-color: #1e2a1f;
+    color: #a0b89e;
+    text-align: center;
+    padding: var(--spacing-2xl) 0;
+    margin-top: var(--spacing-xl);
+    font-size: 0.85rem;
+}
+
+.footerLinks {
+    margin-top: var(--spacing-md);
+}
+
+.footerLinks a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    margin: 0 var(--spacing-xs);
+    transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* ============================================
+   Terms Page Specific Styles
+   ============================================ */
+
+.smsTermsHighlight {
+    background: linear-gradient(to right, var(--bg-offwhite), var(--white));
+    border-left: 5px solid var(--accent-gold);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.smsTermsHighlight h2 {
+    margin-top: 0;
+}
+
+.smsTermsHighlight h3 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.smsTermsHighlight ul {
+    margin-bottom: var(--spacing-md);
+}
+
+.smsTermsHighlight p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .legalHeader {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .legalHeader h1 {
+        font-size: 1.8rem;
+    }
+    
+    .legalContent {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-lg) auto;
+    }
+    
+    .legalContent h2 {
+        font-size: 1.4rem;
+        padding-left: var(--spacing-md);
+    }
+    
+    .legalContent ul, .legalContent ol {
+        margin-left: var(--spacing-lg);
+    }
+    
+    .smsPrivacySection, .smsTermsHighlight {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .legalContent h2 {
+        font-size: 1.25rem;
+    }
+    
+    .legalContent {
+        padding: var(--spacing-md);
+    }
+    
+    .backLink {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+    .legalHeader, .legalFooter, .backLink, .footerLinks {
+        background: none;
+        color: black;
+        border: none;
+    }
+    
+    .legalContent {
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .smsPrivacySection, .smsTermsHighlight {
+        background: none;
+        border-left: 2px solid black;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
